@@ -1,10 +1,2 @@
-# Hello_world
-#This directory contains some example for github usage
-#!/usr/bin/perl
-
-use strict;
-use warnings;
-
-my $name= readLines;
-
-print "What you typed in is ",$name,"\n";
+Phylogenetic trees constructed for Evolution analysis
+This is a pipeline to construct phylogenetic trees based on the parameters provided by users.
