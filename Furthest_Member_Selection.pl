@@ -7,17 +7,21 @@ use strict;
 use POSIX qw(strftime);
 use Filename::Basename;
 use Getopt::Std;
-use vars qw($opt_i $opt_o);
-getopts('i:o:');
+use vars qw($opt_i $opt_o $opt_d);
+getopts('i:o:d:');
 
 use PhyTree; ##use personel perl module
 
-if( $opt_i && $opt_o ){
+if( $opt_i && $opt_o && $opt_d){
     print " Input: $opt_i\n";
     print "Output: $opt_o\n";
     print strftime(" Start: %Y-%m-%d %H:%M:%S\n",localtime(time));
     
-    print strftime("   End: %Y-%m-%d %H-%M-%d")
+    open FILE, "<$opt_i" or die "Can not open the file:$!";
+    #PhyTree
+    my %hash=PhyTree::fasta_db("$opt_d");
+    
+    print strftime("   End: %Y-%m-%d %H-%M-%S\n",localtime(time));
 }else{
     &usage;
 }
